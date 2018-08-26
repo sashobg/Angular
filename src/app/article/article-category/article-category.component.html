@@ -1,0 +1,58 @@
+
+<div class="container">
+    <br>
+      
+        
+      <div class="row">
+  
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+     
+          
+          <div *ngIf="(articles | async)?.length < 1">
+              <div class="bs-component">
+                <div class="card mb-3 size">
+                  <h3 class="card-header size back">Category is empty</h3>
+                </div>
+              </div>
+          </div>
+          <!-- Blog Post -->
+          <div *ngFor="let article of articles | async" class="card mb-4">
+            <img class="card-img-top" src="{{article.imagePath}}" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title"><a
+                routerLink="/articles/details/{{article.id}}"             
+                >{{article.name}}
+                </a></h2>
+              <p class="card-text">{{article.description}}</p>
+              <a routerLink="/articles/details/{{article.id}}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              Posted on {{article.createdOn  | date:'dd.MM.yyyy H:mm'}} 
+             </div>
+          </div>
+          
+        </div>
+        <!-- Sidebar Widgets Column -->
+      <div class="col-md-4">
+
+          <!-- Search Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Search</h5>
+            <div class="card-body">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="button">Go!</button>
+                </span>
+              </div>
+            </div>
+          </div>
+  
+          
+  
+          
+        </div>
+      </div>
+</div>
+  

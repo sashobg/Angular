@@ -1,0 +1,7 @@
+<div class="row">
+    <div *ngFor="let cat of categories | async" class="col-lg-4 ">
+        <div class="card mb-3 size">
+            <h3 routerLink="/article/category/{{cat.name}}" style="cursor: pointer;" class="card-header size">{{cat.name}}</h3>
+          </div>
+        </div>
+      </div>

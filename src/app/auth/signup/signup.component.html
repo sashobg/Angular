@@ -1,0 +1,44 @@
+<br>
+<br>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+      <form #registerForm="ngForm" (ngSubmit)="register()">
+        <fieldset>
+            <legend>Register</legend>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          required
+          type="email" 
+          id="email" 
+          pattern="^[a-zA-Z0-9.!#$%’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+          name="email"
+          [(ngModel)] = "model.email"
+          #email="ngModel"
+          class="form-control">
+
+        <div class="text-danger" [hidden]="email.valid || email.pristine">Please, enter valid email address.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          required
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="model.password"
+          name="password"
+          minlength="4"
+          #password="ngModel"
+          class="form-control">
+          <div class="text-danger" [hidden]="password.valid || password.pristine">Passwort must has at least 6 symbools.</div>
+      </div>
+      <button class="btn btn-primary" [disabled]="registerForm.form.invalid"type="submit">Sign Up</button>
+    </fieldset>
+    </form>
+    
+  </div>
+</div>
